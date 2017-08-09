@@ -107,15 +107,16 @@ set $workspace4 "4:  Rappora Dev"
 set $workspace5 "5:  12Tubes Dev"
 set $workspace6 "6:  Spotify"
 set $workspace8 "8:  Movie"
+set $workspace7 "7:  Outrider Dev"
 
-# switch to workspace
+# switch to workspace 
 bindsym $mod+1 workspace $workspace1
 bindsym $mod+2 workspace $workspace2
 bindsym $mod+3 workspace $workspace3
 bindsym $mod+4 workspace $workspace4
 bindsym $mod+5 workspace $workspace5
 bindsym $mod+6 workspace $workspace6
-bindsym $mod+7 workspace 7
+bindsym $mod+7 workspace $workspace7
 bindsym $mod+8 workspace $workspace8 
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
@@ -127,7 +128,7 @@ bindsym $mod+Shift+3 move container to workspace $workspace3
 bindsym $mod+Shift+4 move container to workspace $workspace4
 bindsym $mod+Shift+5 move container to workspace $workspace5
 bindsym $mod+Shift+6 move container to workspace $workspace6
-bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+7 move container to workspace $workspace7 
 bindsym $mod+Shift+8 move container to workspace $workspace8 
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
@@ -164,6 +165,8 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+bracketleft resize shrink width 5 px or 5 ppt
+bindsym $mod+bracketright resize grow width 5 px or 5 ppt
 
 # window colors
 #                       border              background         text                 indicator
@@ -213,6 +216,9 @@ exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/black-red-3d.png
 # Multi monitor setup
 exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 3440x280 --rotate normal --output DP-5 --off --output DP-4 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-3 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off
 
+bindsym $mod+comma move workspace to output DP-4
+bindsym $mod+period move workspace to output HDMI-0
+
 # Workspace monitor assignment
 workspace $workspace1 output HDMI-0
 workspace $workspace2 output DP-4
@@ -220,6 +226,7 @@ workspace $workspace3 output HDMI-0
 workspace $workspace4 output DP-4
 workspace $workspace5 output DP-4
 workspace $workspace6 output HDMI-0
+workspace $workspace7 output DP-4
 
 # Default workspace for applications
 assign [class="discord"] $workspace1
@@ -243,17 +250,24 @@ exec gnome-twitch
 # Remove old sublime session
 exec --no-startup-id rm ~/.config/sublime-text-3/Local/Session.sublime_session ~/.config/sublime-text-3/Local/'Auto Save Session.sublime_session'
 
-exec --no-startup-id i3-msg 'workspace $workspace5; append_layout ~/.config/i3/layouts/development.json'
-exec gnome-terminal --working-directory=/home/smstromb/dev/12tubes-server
-exec gnome-terminal --working-directory=/home/smstromb/dev/12tubes-server
-exec subl3 ~/dev/12tubes-server
+#exec --no-startup-id i3-msg 'workspace $workspace5; append_layout ~/.config/i3/layouts/development.json'
+#exec gnome-terminal --working-directory=/home/smstromb/dev/12tubes-server
+#exec gnome-terminal --working-directory=/home/smstromb/dev/12tubes-server
+#exec subl3 ~/dev/12tubes-server
+#exec google-chrome-stable --new-window
+
+#exec --no-startup-id i3-msg 'workspace $workspace4; append_layout ~/.config/i3/layouts/development.json'
+#exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
+#exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
+#exec subl3 ~/dev/rappora
+#exec google-chrome-stable --new-window
+
+exec --no-startup-id i3-msg 'workspace $workspace7; append_layout ~/.config/i3/layouts/development.json'
+exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
+exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
+exec subl3 ~/dev/outrider
 exec google-chrome-stable --new-window
 
-# exec --no-startup-id i3-msg 'workspace $workspace4; append_layout ~/.config/i3/layouts/development.json'
-# exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
-# exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
-# exec subl3 ~/dev/rappora
-# exec google-chrome-stable --new-window
 
 # Set default workspaces on startup
 exec --no-startup-id i3-msg "workspace $workspace2"
