@@ -104,10 +104,10 @@ set $workspace1 "1:  Chat"
 set $workspace2 "2:  Chrome"
 set $workspace3 "3:  Twitch"
 set $workspace4 "4:  Rappora Dev"
-set $workspace5 "5:  12Tubes Dev"
+set $workspace5 "5:  Dev 2"
 set $workspace6 "6:  Spotify"
 set $workspace8 "8:  Movie"
-set $workspace7 "7:  Outrider Dev"
+set $workspace7 "7:  Dev 3"
 
 # switch to workspace 
 bindsym $mod+1 workspace $workspace1
@@ -167,6 +167,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 bindsym $mod+bracketleft resize shrink width 5 px or 5 ppt
 bindsym $mod+bracketright resize grow width 5 px or 5 ppt
+bindsym $mod+minus resize shrink height 5 px or 5 ppt
+bindsym $mod+plus resize grow height 5 px or 5 ppt
 
 # window colors
 #                       border              background         text                 indicator
@@ -180,6 +182,7 @@ bar {
   	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	tray_padding 2 
 	position top
+    tray_output DP-4
 	colors {
 		background $bg-color
 	    	separator #757575
@@ -190,7 +193,7 @@ bar {
 	}
 }
 
-gaps inner 50
+#gaps inner 50
 
 # Remove window title bars and set borders to pixel mode to work with gaps
 for_window [class=".*"] border pixel 0
@@ -236,7 +239,7 @@ workspace $workspace7 output DP-4
 assign [class="discord"] $workspace1
 assign [class="Slack"] $workspace1
 
-assign [class="Google-chrome"] $workspace2
+#assign [class="Google-chrome"] $workspace2
 assign [class="Gnome-twitch"] $workspace3
 
 for_window [class="mpv"] move to workspace $workspace8
@@ -260,19 +263,19 @@ exec --no-startup-id rm ~/.config/sublime-text-3/Local/Session.sublime_session ~
 #exec subl3 ~/dev/12tubes-server
 #exec google-chrome-stable --new-window
 
-#exec --no-startup-id i3-msg 'workspace $workspace4; append_layout ~/.config/i3/layouts/development.json'
-#exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
-#exec gnome-terminal --working-directory=/home/smstromb/dev/rappora
-#exec subl3 ~/dev/rappora
-#exec google-chrome-stable --new-window
-
-exec --no-startup-id i3-msg 'workspace $workspace7; append_layout ~/.config/i3/layouts/development.json'
-exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
-exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
-exec subl3 ~/dev/outrider
+exec --no-startup-id i3-msg 'workspace $workspace4; append_layout ~/.config/i3/layouts/development.json'
+exec gnome-terminal --working-directory=/home/smstromb/dev/rappora-docker/rappora
+exec gnome-terminal --working-directory=/home/smstromb/dev/rappora-docker/rappora
+exec subl3 ~/dev/rappora-docker/rappora
 exec google-chrome-stable --new-window
+
+#exec --no-startup-id i3-msg 'workspace $workspace7; append_layout ~/.config/i3/layouts/development.json'
+#exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
+#exec gnome-terminal --working-directory=/home/smstromb/dev/outrider
+#exec subl3 ~/dev/outrider
+#exec google-chrome-stable --new-window
 
 
 # Set default workspaces on startup
-exec --no-startup-id i3-msg "workspace $workspace2"
+exec --no-startup-id i3-msg "workspace $workspace4"
 exec --no-startup-id i3-msg "workspace $workspace1"
