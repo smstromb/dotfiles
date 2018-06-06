@@ -218,10 +218,11 @@ bindsym Shift+Print exec "scrot ~/tmp/screenshot-$(date +%F_%T).png -e 'xclip -s
 
 
 # Set wallpaper
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/black-red-3d.png
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpapers/soft-sunset.jpg
 
 # Multi monitor setup
 exec_always --no-startup-id xrandr --output DVI-D-0 --off --output HDMI-0 --mode 1920x1080 --pos 3440x280 --rotate normal --output DP-5 --off --output DP-4 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-3 --off --output DP-2 --off --output DP-1 --off --output DP-0 --off
+exec_always --no-startup-id xrandr --output DP-4 --primary
 
 bindsym $mod+comma move workspace to output DP-4
 bindsym $mod+period move workspace to output HDMI-0
@@ -265,8 +266,8 @@ exec --no-startup-id rm ~/.config/sublime-text-3/Local/Session.sublime_session ~
 
 exec --no-startup-id i3-msg 'workspace $workspace4; append_layout ~/.config/i3/layouts/development.json'
 exec gnome-terminal --working-directory=/home/smstromb/dev/rappora-docker/rappora
-exec gnome-terminal --working-directory=/home/smstromb/dev/rappora-docker/rappora
-exec subl3 ~/dev/rappora-docker/rappora
+exec gnome-terminal --working-directory=/home/smstromb/dev/rappora-docker
+exec subl3 ~/dev/rappora-docker
 exec google-chrome-stable --new-window
 
 #exec --no-startup-id i3-msg 'workspace $workspace7; append_layout ~/.config/i3/layouts/development.json'
